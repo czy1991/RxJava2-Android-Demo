@@ -51,7 +51,7 @@ public class CompletableObserverExampleActivity extends AppCompatActivity {
     }
 
     /*
-     * simple example using CompletableObserver
+     * simple example using CompletableObserver 只显示完成或异常
      */
     private void doSomeWork() {
         Completable completable = Completable.timer(1000, TimeUnit.MILLISECONDS);

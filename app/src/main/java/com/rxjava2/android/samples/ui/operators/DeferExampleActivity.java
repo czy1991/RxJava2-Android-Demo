@@ -52,14 +52,16 @@ public class DeferExampleActivity extends AppCompatActivity {
      * Defer used for Deferring Observable code until subscription in RxJava
      */
     private void doSomeWork() {
-
-        Car car = new Car();
-
+        Car car=new Car();
         Observable<String> brandDeferObservable = car.brandDeferObservable();
 
         car.setBrand("BMW");  // Even if we are setting the brand after creating Observable
         // we will get the brand as BMW.
         // If we had not used defer, we would have got null as the brand.
+        //defer()中的代码直到被订阅才会执行,发送当前值（事件）。
+        //just 创建时就发送 发送的初始值
+        //create 订阅时 才会执行 发送当前值(事件)
+
 
         brandDeferObservable
                 .subscribe(getObserver());

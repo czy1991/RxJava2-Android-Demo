@@ -53,6 +53,32 @@ public class FilterExampleActivity extends AppCompatActivity {
      *
      */
     private void doSomeWork() {
+        Observable.just("1").filter(new Predicate<String>() {
+            @Override
+            public boolean test(String s) throws Exception {
+                return false;
+            }
+        }).subscribe(new Observer<String>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(String s) {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
         Observable.just(1, 2, 3, 4, 5, 6)
                 .filter(new Predicate<Integer>() {
                     @Override

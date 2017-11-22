@@ -11,6 +11,7 @@ import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.utils.AppConstant;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -53,10 +54,11 @@ public class BufferExampleActivity extends AppCompatActivity {
      */
     private void doSomeWork() {
 
-        Observable<List<String>> buffered = getObservable().buffer(3, 1);
+        Observable<List<String>> buffered = getObservable().buffer(3,1);
 
         // 3 means,  it takes max of three from its start index and create list
-        // 1 means, it jumps one step every time
+         // 1 means, it jumps one step every time
+        //只给count值 count能取的最大值 skip默认为count的值
         // so the it gives the following list
         // 1 - one, two, three
         // 2 - two, three, four
