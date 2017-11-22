@@ -51,12 +51,19 @@ public class BehaviorSubjectExampleActivity extends AppCompatActivity {
      * emitted) and then continues to emit any other items emitted later by the source Observable(s).
      * It is different from Async Subject as async emits the last value (and only the last value)
      * but the Behavior Subject emits the last and the subsequent values also.
+     * BehaviorSubject会发送离订阅最近的上一个值(订阅后的发送值)，没有上一个值的时候会发送默认值。
+     * PublishSubject
+     * PublishSubject仅会向Observer释放在订阅之后Observable释放的数据。
+     * ReplaySubject
+     * 不管Observer何时订阅ReplaySubject，ReplaySubject会向所有Observer释放Observable释放过的数据。
+     * 有不同类型的ReplaySubject，它们是用来限定Replay的范围，例如设定Buffer的具体大小，或者设定具体的时间范围。
+     * 如果使用ReplaySubject作为Observer，注意不要在多个线程中调用onNext、onComplete和onError方法，因为这会导致顺序错乱，这个是违反了Observer规则的。
      */
     private void doSomeWork() {
 
-        BehaviorSubject<Integer> source = BehaviorSubject.create();
+        BehaviorSubject<Integer> source = BehaviorSubject.createDefault(0);
 
-        source.subscribe(getFirstObserver()); // it will get 1, 2, 3, 4 and onComplete
+        source.subscribe(getFirstObserver()); // it will get 0,1, 2, 3, 4 and onComplete
 
         source.onNext(1);
         source.onNext(2);
