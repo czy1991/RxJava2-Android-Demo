@@ -48,7 +48,11 @@ public class ScanExampleActivity extends AppCompatActivity {
         });
     }
 
-    /* Using scan operator, it sends also the previous result */
+    /* Using scan operator, it sends also the previous result
+     * scan操作符通过遍历被订阅者产生的结果，依次对每一个结果项按照指定规则进行运算，
+     * 计算后的结果作为下一个迭代项参数，每一次迭代项都会把计算结果输出给订阅者。
+     * 和reduce一样 只是reduce只有最后的结果 没有中间的计算过程 scan把每次计算的结果都打印出来了
+      * */
     private void doSomeWork() {
         getObservable()
                 // Run on a background thread

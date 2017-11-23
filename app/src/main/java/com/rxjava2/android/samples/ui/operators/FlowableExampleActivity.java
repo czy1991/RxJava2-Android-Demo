@@ -49,6 +49,8 @@ public class FlowableExampleActivity extends AppCompatActivity {
 
     /*
      * simple example using Flowable
+     * 50 初始值结果为60(50+1+2+3+4=60)
+     *reduce操作符接收Observable发射的数据并利用提供的函数的计算结果作为下次计算的参数，输出最后的结果。首次没有计算结果传入前两个参数。
      */
     private void doSomeWork() {
 
